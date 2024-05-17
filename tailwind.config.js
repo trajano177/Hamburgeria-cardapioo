@@ -6,6 +6,9 @@ module.exports = {
     './index.html',
   ],
   theme: {
+    fontFamily:{
+      'sans': ['Roboto', 'sans-serife']
+    },
     extend: {
       backgroundImage: {
         "home": "url('/assets/bg.png')"
