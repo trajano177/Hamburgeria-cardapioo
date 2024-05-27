@@ -9,6 +9,8 @@ const cartCounter = document.getElementById('cart-count')
 const adrressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
+let cart = []
+
 
 // abrir o modal do carrinho
 cartBtn.addEventListener("click", function() {
@@ -26,3 +28,61 @@ closeModalBtn.addEventListener("click", function() {
   cartModal.style.display = "none"
   })
 
+  menu.addEventListener("click", function(event) {
+
+    let parentButton = event.target.closest(".add-to-cart-btn")
+
+    if(parentButton){
+      const name = parentButton.getAttribute("data-name")
+      const price = parseFloat(parentButton.getAttribute("data-price"))
+      addToCart( name, price)
+    }
+  })
+
+  // função para add no carrinho 
+
+  function addToCart(name, price) {
+    const existingItem = cart.find(item => item.name === name)
+
+    if(existingItem){
+     existingItem.quantity += 1;
+      return;
+      // se o item já existe aumenta apenas a quantidade + 1
+    } else {
+      cart.push({
+        name, 
+        price, 
+        quantity: 1,
+      })
+    } 
+  }
+  
+  
+  // att o carinho 
+
+  function updateCartModal(){
+    cartItemsContainer.innerHTML =  "";
+    let total = 0;
+
+    cart.forEach(item => {
+       const cartItemElement = documet.createElement("div");
+
+       cartItemElement.innerHTML = `  
+    <div>
+        <div>
+        <p>${item.name}</p>
+        <p>${item.quantity}</p>
+        <p>${item.price}</p>
+        </div>
+
+        <div>
+          <button>
+          remover
+          </button>
+        </div>
+    </div>
+       `;
+
+       cartItemsContainer.appendChild(cartItemElement)
+    })
+  }
