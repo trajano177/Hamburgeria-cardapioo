@@ -77,12 +77,11 @@ closeModalBtn.addEventListener("click", function() {
 
        <div>
          <button>
-           remover
+           removerr
          </button>
        </div>
       </div>
-      `;
-
-      cartItemsContainer.appendChild(cartItemElement);
+      `; 
+      cartItemsContainer.appendChild(cartItemElement)
    });
 }
