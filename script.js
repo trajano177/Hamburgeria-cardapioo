@@ -65,24 +65,24 @@ closeModalBtn.addEventListener("click", function() {
     let total = 0;
 
     cart.forEach(item => {
-       const cartItemElement = documet.createElement("div");
+      const cartItemElement = document.createElement("div");
 
-       cartItemElement.innerHTML = `  
-    <div>
-        <div>
-        <p>${item.name}</p>
-        <p>${item.quantity}</p>
-        <p>${item.price}</p>
-        </div>
+      cartItemElement.innerHTML = `  
+      <div>
+       <div>
+         <p>${item.name}</p>
+         <p>${item.quantity}</p>
+         <p>${item.price}</p>
+       </div>
 
-        <div>
-          <button>
-          remover
-          </button>
-        </div>
-    </div>
-       `;
+       <div>
+         <button>
+           remover
+         </button>
+       </div>
+      </div>
+      `;
 
-       cartItemsContainer.appendChild(cartItemElement)
-    })
-  }
+      cartItemsContainer.appendChild(cartItemElement);
+   });
+}
