@@ -55,6 +55,7 @@ closeModalBtn.addEventListener("click", function() {
         quantity: 1,
       })
     } 
+    updateCartModal()
   }
   
   
@@ -63,8 +64,10 @@ closeModalBtn.addEventListener("click", function() {
   function updateCartModal(){
     cartItemsContainer.innerHTML =  "";
     let total = 0;
+    
 
     cart.forEach(item => {
+      
       const cartItemElement = document.createElement("div");
 
       cartItemElement.innerHTML = `  
