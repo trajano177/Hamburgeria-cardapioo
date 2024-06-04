@@ -6,7 +6,7 @@ const cartTotal = document.getElementById("cart-total")
 const checkoutBtn = document.getElementById("checkout-btn")
 const closeModalBtn = document.getElementById("close-modal-btn")
 const cartCounter = document.getElementById("cart-count")
-const adrressInput = document.getElementById("address")
+const addressInput = document.getElementById("address")
 const addressWarn = document.getElementById("address-warn")
 
 let cart = []
@@ -124,3 +124,45 @@ cartItemsContainer.addEventListener("click", function(event) {
   
 })
 
+addressInput.addEventListener("input", function(event){
+  let inputValue = event.target.value;
+
+  if(inputValue !== "") {
+    addressInput.classList.remove("border-red-500")
+    addressWarn.classList.add("hidden")
+  }
+})
+
+// finalizar pedido 
+checkoutBtn.addEventListener("click", function(){
+
+  const isOpen = checkRestauranteOpen();
+  if(!isOpen) {
+    alert("RESTAURANTE FECHADO NO MOEMTNO!")
+    return;
+  }
+  if(cart.length === 0) return; 
+  if(addressInput.value === ""){
+    addressWarn.classList.remove("hidden")
+    addressInput.classList.add("border-red-500")
+    return;
+  }
+})
+
+// verificar a hora e manipular o card horario
+function checkRestauranteOpen() {
+ const data = new Date();
+ const hora = data.getHours()
+ return hora >= 18 && hora < 22; // restaurante aberto
+}
+
+const spanItem = document.getElementById("date-span")
+const isOpen = checkRestauranteOpen()
+
+if (isOpen){
+  spanItem.classList.remove("bg-red-500"); 
+  spanItem.classList.add("bg-green-600")
+}else{
+  spanItem.classList.remove("bg-green-600")
+  spanItem.classList.add("bg-red-500")
+}
