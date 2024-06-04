@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -218,7 +220,8 @@
         <input
          type="text"
          placeholder="Digite seu endereço"
-         class="w-full border-2 p-1 rounded my-1">
+         class="w-full border-2 p-1 rounded my-1"
+         id="address">
 
          <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
 
@@ -238,7 +241,7 @@
       class="items-center gap-2 text-white font-bold"
       id="cart-btn"
       >
-        (<span id="car-count">0</span>)
+        (<span id="cart-count">0</span>)
         Veja meu carrinho
         <i class="fa fa-cart-plus text-lg text-white"></i>
       </button>
@@ -247,7 +250,7 @@
 
 
 <!-- FIM  BUTTON CART FOOTER-->
-
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 <script src="script.js"></script>
 </body>
 </html>
