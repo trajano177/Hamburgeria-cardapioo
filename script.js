@@ -138,7 +138,18 @@ checkoutBtn.addEventListener("click", function(){
 
   const isOpen = checkRestauranteOpen();
   if(!isOpen) {
-    alert("RESTAURANTE FECHADO NO MOEMTNO!")
+    Toastify({
+      text: "Ops o restaurante está fechado!",
+      duration: 3000,
+      close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "left", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
     return;
   }
   if(cart.length === 0) return; 
@@ -147,6 +158,19 @@ checkoutBtn.addEventListener("click", function(){
     addressInput.classList.add("border-red-500")
     return;
   }
+  const cartItems = cart.map((item) => {
+    return (
+      `${item.name} Quantidade: (${item.quantity}) Preço: R$${item.price})`
+    )
+  }).join("")
+
+  const message = encodeURIComponent(cartItems)
+  const phone = "32984511215"
+
+  window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, "_blanck")
+
+  cart = []
+  updateCartModal()
 })
 
 // verificar a hora e manipular o card horario
